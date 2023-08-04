@@ -6,7 +6,7 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 16:57:38 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/06/10 18:43:01 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:31:52 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,6 @@ void	choose_move(t_pu_sw *ps, int range)
 		big_index.a = near_pos;
 		big_index.b = find_predecessor_in_b(ps, ps->a[near_pos]);
 		move = move_r_or_rr(ps, ps->a, ps->b, big_index);
-		if (near_pos < ps->size_b && !ft_strcmp(move, "ra") && \
-		find_predecessor_in_b(ps, ps->a[near_pos] != ps->size_b -1))
-			move_rr(ps);
-		else if (ps->size_a - near_pos < ps->size_b && \
-		!ft_strcmp(move, "rra") && find_predecessor_in_b(ps, \
-		ps->a[near_pos]) != ps->size_b -1)
-			move_rrr(ps);
-		else
 		execution_move(ps, move);
 		near_pos = near_pos_to_move(ps->a, ps->size_a, range, 0);
 	}

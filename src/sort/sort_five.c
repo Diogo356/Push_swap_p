@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 16:59:44 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/06/09 16:59:45 by dbelarmi         ###   ########.fr       */
+/*   Created: 2023/06/09 16:58:59 by dbelarmi          #+#    #+#             */
+/*   Updated: 2023/06/12 17:23:32 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_bzero(void *s, size_t n)
+void	sort_five(t_pu_sw *ps)
 {
-	int	i;
+	int	i_low_nb;
 
-	i = 0;
-	while (n && s)
+	while (!validate_order(ps) || ps->size_b)
 	{
-		*(unsigned char *)(s + i) = '\0';
-		i++;
-		n--;
+		i_low_nb = find_index_smaller_a(ps);
+		if (ps->size_b == 2)
+		{
+			sort_three(ps);
+			move_pa(ps);
+			move_pa(ps);
+		}
+		else if (i_low_nb == ps->size_a -1)
+			move_pb(ps);
+		else if (i_low_nb > 2 && i_low_nb != ps->size_a -1)
+			move_ra(ps);
+		else if (i_low_nb < 3 && i_low_nb != ps->size_a -1)
+			move_rra(ps);
 	}
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	size_t	aux;
-	void	*tab;
-
-	if (nmemb == 0)
-		return (NULL);
-	if (nmemb > 2147483647 || size > 2147483647 || size * nmemb > 2147483647)
-		return (NULL);
-	aux = (size) * (nmemb);
-	tab = malloc(aux);
-	if (tab == NULL)
-		return (NULL);
-	ft_bzero(tab, aux);
-	return (tab);
 }

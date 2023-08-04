@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atolongi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 20:38:52 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/05/10 16:32:56 by dbelarmi         ###   ########.fr       */
+/*   Created: 2023/06/09 16:59:39 by dbelarmi          #+#    #+#             */
+/*   Updated: 2023/06/09 16:59:39 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h" 
+#include "push_swap.h"
 
 long int	ft_atoi(const char *nptr)
 {
-	long int	num;
 	int			i;
-	int			sign;
+	int			signal;
+	long int	nb;
 
-	sign = 1;
-	num = 0;
 	i = 0;
-	if(!nptr[i])
-		return(0);
-	while (nptr[i] == ' ' || nptr[i] == '\n' || nptr[i] == '\t' || \
-	nptr[i] == '\f' || nptr[i] == '\v' || nptr[i] == '\r')
-		i++;
+	signal = 1;
+	nb = 0;
+	if (!nptr[i])
+		return (0);
+	while ((nptr[i] == '\t') || (nptr[i] == '\v') || (nptr[i] == '\f') || \
+	(nptr[i] == '\n') || (nptr[i] == '\r') || (nptr[i] == ' '))
+		i = i + 1;
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')
-			sign *= -1;
+			signal *= -1;
 		i++;
 	}
 	while (nptr[i] >= 48 && nptr[i] <= 57)
 	{
-		num = (num * 10) + (nptr[i] - 48);
+		nb = (nb * 10) + (nptr[i] - 48);
 		i++;
 	}
-	return (num * sign);
+	return (nb * signal);
 }

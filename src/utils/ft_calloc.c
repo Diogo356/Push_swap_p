@@ -5,22 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 20:39:04 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/05/10 14:38:13 by dbelarmi         ###   ########.fr       */
+/*   Created: 2023/06/09 16:59:44 by dbelarmi          #+#    #+#             */
+/*   Updated: 2023/06/09 16:59:45 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	*ft_calloc(size_t nelem, size_t elsize)
+static void	ft_bzero(void *s, size_t n)
 {
-	void	*p;
+	int	i;
 
-	if (nelem == 0 || elsize == 0 || nelem > 2147483647 || elsize > 2147483647)
+	i = 0;
+	while (n && s)
+	{
+		*(unsigned char *)(s + i) = '\0';
+		i++;
+		n--;
+	}
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	size_t	aux;
+	void	*tab;
+
+	if (nmemb == 0)
 		return (NULL);
-	p = malloc (nelem * elsize);
-	if (p == 0)
-		return (p);
-	ft_bzero (p, nelem * elsize);
-	return (p);
+	if (nmemb > 2147483647 || size > 2147483647 || size * nmemb > 2147483647)
+		return (NULL);
+	aux = (size) * (nmemb);
+	tab = malloc(aux);
+	if (tab == NULL)
+		return (NULL);
+	ft_bzero(tab, aux);
+	return (tab);
 }

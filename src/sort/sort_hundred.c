@@ -6,7 +6,7 @@
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 16:59:03 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/06/10 19:16:48 by dbelarmi         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:42:00 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	sort_hundred(t_pu_sw *ps, int division)
 			move_pb(ps);
 		}
 	}
-	bigger_to_top(ps, find_index_bigger(ps->b, ps->size_b), ps->size_b, 'b');
+	bigger_to_top(ps, find_index_bg(ps->b, ps->size_b), ps->size_b, 'b');
 	while (ps->size_b)
 		move_pa(ps);
 }

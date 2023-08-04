@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dbelarmi <dbelarmi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 20:39:27 by dbelarmi          #+#    #+#             */
-/*   Updated: 2023/05/11 17:28:56 by dbelarmi         ###   ########.fr       */
+/*   Created: 2023/06/09 16:59:56 by dbelarmi          #+#    #+#             */
+/*   Updated: 2023/06/10 14:59:12 by dbelarmi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,21 @@
 
 int	ft_isdigit(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(str[i] == '\0')
-		return (0); // significa erro
-	while(str[i] && str[i] != '\0')
+	if (str[i] == '\0')
+		return (0);
+	while (str[i] != '\0')
 	{
-		if(str[i] == '-' || str[i] == '+')
+		if (str[0] == '-' || str[0] == '+' )
 			i++;
-		while(str[i] == ' ')
+		while (str[i] >= 48 && str[i] <= 57)
 			i++;
-		while(str[i] >= 48 && str[i] <= 57)
-			i++;
-		if(str[i] == '\0')
-			return(1); // significa certo que está tudo correto;
+		if (str[i] == '\0')
+			return (1);
 		else
-			return(0); // significa erro;
+			return (0);
 	}
-	return (0); // siginifica erro;
+	return (0);
 }
